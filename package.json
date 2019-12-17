@@ -1,0 +1,24 @@
+{
+  "name": "github-action-get-regex-branch",
+  "version": "1.0.0",
+  "description": "A github action to get the last semver branch in a repository that matches a prefix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jessicalostinspace/github-action-get-regex-branch.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jessicalostinspace/github-action-get-regex-branch/issues"
+  },
+  "homepage": "https://github.com/jessicalostinspace/github-action-get-regex-branch#readme",
+  "dependencies": {
+    "@actions/core": "^1.2.0",
+    "@actions/github": "^2.0.0"
+  }
+}

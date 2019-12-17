@@ -1,0 +1,13 @@
+name: 'Get Last Branch with Regex Prefix'
+description: 'Gets the last semver branch with given regex prefix'
+inputs:
+  regex-string:  # id of input
+    description: 'Regex string that is a prefix of the branch you want'
+    required: true
+    default: ''
+outputs:
+  latestBranchName: # id of output
+    description: 'The full branch name that contains semantic versioning'
+runs:
+  using: 'node12'
+  main: 'index.js'
