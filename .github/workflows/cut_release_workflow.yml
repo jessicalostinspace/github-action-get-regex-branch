@@ -17,4 +17,5 @@ jobs:
     - name: Get latest release branch
       id: lrb
       uses: ./action.yml
+    - name: Output time
       run: echo "The time is ${{ steps.hello.outputs.time }}"
