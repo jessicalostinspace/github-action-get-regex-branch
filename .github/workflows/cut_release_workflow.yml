@@ -1,0 +1,20 @@
+name: Cut Scheduled Release
+
+on: 
+  schedule:
+    - cron: '0 5 * * 5' # Run the job at 5PM every Friday
+
+jobs:
+  cut_latest_release_branch:
+    name: Cut the latest release
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Development
+      uses: actions/checkout@v2 #checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+      with: 'development'
+      # token: ${{ github.token }}
+    - name: Get latest release branch
+      id: lrb
+      uses: ./action.yml
+      run: echo "The time is ${{ steps.hello.outputs.time }}"

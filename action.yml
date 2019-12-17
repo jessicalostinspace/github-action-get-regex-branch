@@ -6,8 +6,10 @@ inputs:
     required: true
     default: ''
 outputs:
-  latestBranchName: # id of output
-    description: 'The full branch name that contains semantic versioning'
+  time:
+    description: 'The time'
+  # latestBranchName: # id of output
+  #   description: 'The full branch name that contains semantic versioning'
 runs:
   using: 'node12'
   main: 'index.js'
