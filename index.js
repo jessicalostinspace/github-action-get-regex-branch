@@ -9,6 +9,8 @@ try {
   
   // Get all the branches with the regex prefix and return the last version
   exec('git for-each-ref --sort=-committerdate refs/heads/release-v*', (err, branches, stderr) => {
+      console.log('err', err)
+      console.log('branches', branches)
     if (err) {
         console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
         console.log('\x1b[31m%s\x1b[0m', stderr);
