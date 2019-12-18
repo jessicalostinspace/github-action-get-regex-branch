@@ -14,8 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Development
-      uses: actions/checkout@v2 #checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
+    # - name: Checkout Development
+    #   uses: actions/checkout@v2 #checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
       # with: 'development'
       # token: ${{ github.token }}
     - name: Get latest release branch
