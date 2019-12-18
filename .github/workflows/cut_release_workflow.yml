@@ -21,4 +21,4 @@ jobs:
     - name: Get latest release branch
       id: lrb
       # uses: ./.github/actions/get-regex-branch
-      uses: ${$GITHUB_WORKSPACE}/.github/actions/get-regex-branch
+      uses: $GITHUB_WORKSPACE/.github/actions/get-regex-branch
