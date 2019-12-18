@@ -30,7 +30,7 @@ try {
         process.exit(0);
     })
 
-    console.log('lastReleaseBranchName: ', lastReleasBranchName)
+    console.log('lastReleaseBranchName: ', lastReleaseBranchName)
   };
 
 console.log('lastSemVer', lastSemVer);
