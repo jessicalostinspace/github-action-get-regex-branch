@@ -4,7 +4,7 @@ inputs:
   regex-string:  # id of input
     description: 'Regex string that is a prefix of the branch you want'
     required: true
-    default: ''
+    default: 'release-v'
 outputs:
   release-branch-name:
     description: 'The latest release branch name'

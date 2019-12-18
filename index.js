@@ -8,7 +8,7 @@ try {
   console.log(`Regex String: ${regexString}`);
   
   // Get all the branches with the regex prefix and return the last version
-  const releaseBranch = exec('git for-each-ref --sort=-committerdate refs/heads/release-v*', (err, branches, stderr) => {
+  const releaseBranch = exec('git for-each-ref --sort=-committerdate refs/heads/release-v', (err, branches, stderr) => {
       console.log('err', err)
       console.log('branches', branches)
     if (err) {
