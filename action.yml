@@ -6,9 +6,8 @@ inputs:
     required: true
     default: ''
 outputs:
-  time:
-    description: 'The time'
-  # latestBranchName: # id of output
+  release-branch-name:
+    description: 'The latest release branch name'
   #   description: 'The full branch name that contains semantic versioning'
 runs:
   using: 'node12'
