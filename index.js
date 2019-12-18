@@ -8,7 +8,7 @@ try {
   console.log(`Regex String: ${regexString}`);
   
   // Get all the branches with the regex prefix and return the last version
-  exec('git for-each-ref --sort=-committerdate refs/heads/release-v*', (err, branches, stderr) => {
+  const releaseBranch = exec('git for-each-ref --sort=-committerdate refs/heads/release-v*', (err, branches, stderr) => {
       console.log('err', err)
       console.log('branches', branches)
     if (err) {
@@ -26,6 +26,8 @@ try {
     // console.log(`::set-output name=tag::${tag}`);
     process.exit(0);
 });
+
+console.log('release branch', releaseBranch)
   
 //   const time = (new Date()).toTimeString();
 //   core.setOutput("time", time);
