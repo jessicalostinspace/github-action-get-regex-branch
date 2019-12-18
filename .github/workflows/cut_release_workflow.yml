@@ -1,8 +1,12 @@
 name: Cut Scheduled Release
 
-on: 
-  schedule:
-    - cron: '0 5 * * 5' # Run the job at 5PM every Friday
+# on: 
+#   schedule:
+#     - cron: '0 5 * * 5' # Run the job at 5PM every Friday
+on:
+  push:
+    branches:
+      - 'development'
 
 jobs:
   cut_latest_release_branch:
