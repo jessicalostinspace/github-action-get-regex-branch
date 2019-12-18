@@ -20,4 +20,5 @@ jobs:
       # token: ${{ github.token }}
     - name: Get latest release branch
       id: lrb
-      uses: ./.github/actions/get-regex-branch
+      # uses: ./.github/actions/get-regex-branch
+      uses: ./action.yml
