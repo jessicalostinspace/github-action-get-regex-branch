@@ -1,0 +1,13 @@
+name: 'Release Cut Cron Job'
+description: 'Cut Release Branches on a Schedule'
+inputs:
+  previousVersion:  # id of input
+    description: 'Last version released'
+    required: true
+    # default: 'World'
+outputs:
+  releaseBranchName: # id of output
+    description: 'The new release branch name'
+runs:
+  using: 'node12'
+  main: 'index.js'
