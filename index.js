@@ -7,13 +7,14 @@ try {
   const regexString = core.getInput('regex-string');
   console.log(`Regex String: ${regexString}`);
 
-//   const command = '"sh ./cut-release-branch.sh" ${regexString}';
-const command = 'echo ls: "$(ls)"'
+  const command = 'sh ./cut-release-branch.sh';
+// const command = 'echo ls: "$(ls)"'
   
   // Get all the branches with the regex prefix and return the last version
     exec(command, (err, stdout, stderr) => {
-        console.log('err', err)
-        console.log('branches', stdout)
+        console.log('err: ', err)
+        console.log('stdout: ', stdout)
+        console.log('stderr: ', stderr)
         if (err) {
             console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
             console.log('\x1b[31m%s\x1b[0m', stderr);
