@@ -7,7 +7,7 @@ try {
   const regexString = core.getInput('regex-string');
   console.log(`Regex String: ${regexString}`);
 
-  const command = '"./ cut-release-branch.sh" ${regexString}';
+  const command = '"sh cut-release-branch.sh" ${regexString}';
   
   // Get all the branches with the regex prefix and return the last version
     exec(command, (err, stdout, stderr) => {
