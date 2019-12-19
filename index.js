@@ -24,7 +24,7 @@ exec(command, (err, stdout, stderr) => {
     console.log('\x1b[32m%s\x1b[0m', `Found branches: ${stdout}`);
 
     // core.setOutput("release-branch-name", release-branch-name);
-    console.log(`The branches list: ${branches}`);
+    // console.log(`The branches list: ${branches}`);
     // console.log(`::set-output name=tag::${tag}`);
     process.exit(0);
     });
