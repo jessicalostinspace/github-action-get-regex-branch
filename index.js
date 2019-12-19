@@ -7,33 +7,29 @@ try {
   const regexString = core.getInput('regex-string');
   console.log(`Regex String: ${regexString}`);
 
-  const command = 'git for-each-ref --sort=-committerdate refs/heads/release-v';
+  const command = 'git for-each-ref --sort=-committerdate refs/heads/';
   
   // Get all the branches with the regex prefix and return the last version
-  const lastSemVer = (command, cb) => {
-      const lastReleaseBranchName = exec(command, (err, stdout, stderr) => {
-        console.log('err', err)
-        console.log('branches', stdout)
-        if (err) {
-            console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
-            console.log('\x1b[31m%s\x1b[0m', stderr);
-            process.exit(1);
+exec(command, (err, stdout, stderr) => {
+    console.log('err', err)
+    console.log('branches', stdout)
+    if (err) {
+        console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
+        console.log('\x1b[31m%s\x1b[0m', stderr);
+        process.exit(1);
 
-            return;
-        }
+        return;
+    }
 
-        console.log('\x1b[32m%s\x1b[0m', `Found branches: ${stdout}`);
+    console.log('\x1b[32m%s\x1b[0m', `Found branches: ${stdout}`);
 
-        // core.setOutput("release-branch-name", release-branch-name);
-        console.log(`The branches list: ${branches}`);
-        // console.log(`::set-output name=tag::${tag}`);
-        process.exit(0);
-    })
+    // core.setOutput("release-branch-name", release-branch-name);
+    console.log(`The branches list: ${branches}`);
+    // console.log(`::set-output name=tag::${tag}`);
+    process.exit(0);
+    });
 
-    console.log('lastReleaseBranchName: ', lastReleaseBranchName)
-  };
-
-console.log('lastSemVer', lastSemVer);
+    // console.log('lastReleaseBranchName: ', lastReleaseBranchName)
   
 //   const time = (new Date()).toTimeString();
 //   core.setOutput("time", time);
