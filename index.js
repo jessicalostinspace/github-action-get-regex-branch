@@ -10,7 +10,7 @@ try {
   const command = 'git for-each-ref --sort=-committerdate refs/heads/';
   
   // Get all the branches with the regex prefix and return the last version
-exec(command, (err, stdout, stderr) => {
+exec('git for-each-ref --sort=-committerdate refs/heads/', (err, stdout, stderr) => {
     console.log('err', err)
     console.log('branches', stdout)
     if (err) {
