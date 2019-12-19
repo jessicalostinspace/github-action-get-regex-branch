@@ -11,7 +11,7 @@ try {
 // const command = 'echo ls: "$(ls)"'
   
   // Get all the branches with the regex prefix and return the last version
-    exec(command, (err, stdout, stderr) => {
+    exec(command, { shell: "bash" }, (err, stdout, stderr) => {
         console.log('err: ', err)
         console.log('stdout: ', stdout)
         console.log('stderr: ', stderr)
