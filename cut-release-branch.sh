@@ -19,8 +19,8 @@ fi
 #     echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+')
 # fi
 
-# echo $(git branch -a | grep $regexString )
-echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+')
+echo $(git branch -a | grep $regexString )
+# echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+')
 
 # git checkout -b "release-$version"
 # git push --set-upstream origin "release-$version"
