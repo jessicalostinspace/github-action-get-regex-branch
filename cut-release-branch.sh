@@ -17,7 +17,7 @@ getLastSemanticVersion
 # echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+' | cut -d " ")
 
 
-# echo 'semanticVersion var: '$semanticVersion
+echo 'semanticVersion var: '$semanticVersion
 
 
 # echo '{"hostname":"test","domainname":"example.com"}' 
