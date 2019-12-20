@@ -8,7 +8,7 @@ git branch
 echo $(git branch)
 git for-each-ref --sort=-committerdate refs/heads/$regexString
 
-echo $(git for-each-ref --sort=-committerdate refs/heads/$regexString)
+echo $(git for-each-ref --sort=-committerdate refs/heads/release-v*)
 
 # git checkout -b "release-$version"
 # git push --set-upstream origin "release-$version"
