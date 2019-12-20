@@ -8,7 +8,7 @@ try {
   console.log(`Regex String: ${regexString}`);
 
   const command = 'sh cut-release-branch.sh ' + regexString;
-// const command = 'echo ls: "$(ls)"'
+  console.log('command:', command)
   
   // Get all the branches with the regex prefix and return the last version
     exec(command, [{shell: "bash"}], (err, stdout, stderr) => {
