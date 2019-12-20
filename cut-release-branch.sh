@@ -3,7 +3,7 @@ set -e
 
 regexString=$1
 
-semanticVersion=''
+semanticVersions=''
 
     if [ $regexString ]; then 
         semanticVersions=$(echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+') | cut -b 1-11)
@@ -15,7 +15,7 @@ semanticVersion=''
 # echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+' | cut -d " ")
 
 
-echo 'semanticVersion var: '$semanticVersion
+echo 'semanticVersions var: '$semanticVersions
 
 
 # echo '{"hostname":"test","domainname":"example.com"}' 
