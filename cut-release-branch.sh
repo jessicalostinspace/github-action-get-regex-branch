@@ -2,10 +2,13 @@ set -e
 
 regexString=$1
 
+echo 'regexString: '$regexString
+
 if [ ! $regexString ]; then 
     regexString="''"
 fi
 
+echo 'regexString2: '$regexString
 # if [ !$regexString ]; then
 #     regexString = ""
 # fi
