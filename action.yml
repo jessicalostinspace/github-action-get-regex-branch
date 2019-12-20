@@ -4,7 +4,7 @@ inputs:
   regex-string:  # id of input
     description: 'A string to filter branch names by'
     required: true
-    default: "''"
+    default: ''
 outputs:
   last-semver:
     description: 'The semantic version'
