@@ -22,7 +22,7 @@ echo 'regexString2: '$regexString
 #     echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+')
 # fi
 
-echo $(git branch -a | grep $regexString )
+echo $(git branch -a | grep "$regexString" )
 # echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+')
 
 # git checkout -b "release-$version"
