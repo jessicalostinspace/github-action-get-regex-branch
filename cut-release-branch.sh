@@ -7,7 +7,7 @@ regexString=$1
 
 git for-each-ref --sort=-committerdate refs/heads/$regexString
 
-echo $(git for-each-ref --shell --sort=-committerdate refs/heads/release-v*)
+echo $(git for-each-ref --shell --sort=-committerdate refs/heads/)
 
 # git checkout -b "release-$version"
 # git push --set-upstream origin "release-$version"
