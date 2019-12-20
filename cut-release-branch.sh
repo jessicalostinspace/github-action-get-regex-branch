@@ -15,6 +15,7 @@ fi
 # echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+' | cut -d " ")
 
 echo 'semanticVersions var: '$semanticVersions
+echo 'branches: ' $(git branch -a)
 
 
 # echo '{"hostname":"test","domainname":"example.com"}' 
