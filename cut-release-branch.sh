@@ -6,10 +6,11 @@ regexString=$1
 echo 'regexString: '$regexString
 
 if [ ! $regexString ]; then 
-    regexString="''"
+    echo 'regexString exists'
+else
+    echo 'regexString dne'    
 fi
 
-echo 'regexString2: '$regexString
 # if [ !$regexString ]; then
 #     regexString = ""
 # fi
