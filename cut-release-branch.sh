@@ -12,9 +12,9 @@ if [ -z ${regexString+x} ]; then echo "var is unset"; else echo "var is set to '
 # echo
 
 if [ -z ${regexString+x} ]; then 
-    (echo $(git branch -a | egrep -o '([0-9]+\.){2}[0-9]+'))
+    echo $(git branch -a | egrep -o '([0-9]+\.){2}[0-9]+')
 else 
-    (echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+'))
+    echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+')
 fi
 
 echo $(git branch -a | grep $regexString )
