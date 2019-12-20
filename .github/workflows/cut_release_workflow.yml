@@ -23,4 +23,4 @@ jobs:
       id: lrb
       uses: ./
       with:
-        regexPrefix: 'release-v'
+        regex-prefix: 'release-v'
