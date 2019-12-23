@@ -20,7 +20,7 @@ try {
             return;
         }
 
-        const { data } = JSON.parse(stdout); 
+        const data = JSON.parse(stdout); 
         console.log('data', data)
         // console.log("data[semanticVersion]", data["semanticVersion"])
 
