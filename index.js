@@ -19,7 +19,11 @@ try {
 
             return;
         }
-        console.log("type", typeof stdout)
+
+        const data = JSON.parse(stdout); 
+
+        console.log("type", typeof data)
+        console.log("data", data)
         if (stdout["semanticVersion"]) {
             console.log("semVer: " , stdout["semanticVersion"])
         }
