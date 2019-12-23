@@ -13,8 +13,8 @@ else
     semanticVersion=$(echo $(git branch -a | egrep -o '([0-9]+\.){2}[0-9]+' | sort --version-sort | tail -n 1))
 fi
 
-echo 'semanticVersion var: '$semanticVersion
-echo 'branchName var: '$branchName
+# echo 'semanticVersion var: '$semanticVersion
+# echo 'branchName var: '$branchName
 
 
-# echo '{"hostname":"test","domainname":"example.com"}' 
+echo '{"semanticVersion": $semanticVersion, "branchName": $branchName}' 
