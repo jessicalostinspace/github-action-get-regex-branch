@@ -21,7 +21,7 @@ try {
         }
 
         const { data } = JSON.parse(stdout); 
-        console.log("data[semanticVersion]", data[semanticVersion])
+        console.log("data[semanticVersion]", data["semanticVersion"])
 
         if (data["semanticVersion"]) {
             console.log("semVer: " , stdout["semanticVersion"])
