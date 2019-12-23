@@ -19,7 +19,7 @@ try {
 
             return;
         }
-        
+        console.log("type", typeof stdout)
         if (stdout["semanticVersion"]) {
             console.log("semVer: " , stdout["semanticVersion"])
         }
