@@ -12,9 +12,6 @@ try {
   
   // Get all the branches with the regex prefix and return the last version
     exec(command, [{shell: "bash"}], (err, stdout, stderr) => {
-        console.log('err: ', err)
-        console.log('stdout: ', stdout)
-        console.log('stderr: ', stderr)
         if (err) {
             console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
             console.log('\x1b[31m%s\x1b[0m', stderr);
@@ -22,7 +19,10 @@ try {
 
             return;
         }
-
+        
+        if (stdout["semanticVersion"]) {
+            console.log("semVer: " , stdout["semanticVersion"])
+        }
         console.log('\x1b[32m%s\x1b[0m', `Found branch: ${stdout}`);
 
         
