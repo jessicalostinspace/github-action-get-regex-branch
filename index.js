@@ -21,12 +21,12 @@ try {
         }
 
         const { data } = JSON.parse(stdout); 
-        console.log('data', data)
+        // console.log('data', data)
         // console.log("data[semanticVersion]", data["semanticVersion"])
 
-        if (data["semanticVersion"]) {
-            console.log("semVer: " , stdout["semanticVersion"])
-        }
+        // if (data["semanticVersion"]) {
+        //     console.log("semVer: " , stdout["semanticVersion"])
+        // }
         console.log('\x1b[32m%s\x1b[0m', `Found branch: ${stdout}`);
 
         
