@@ -17,4 +17,4 @@ fi
 # echo 'branchName var: '$branchName
 
 
-echo '{"semanticVersion": $semanticVersion, "branchName": $branchName}' 
+echo '{"semanticVersion": '$semanticVersion', "branchName": '$branchName'}' 
