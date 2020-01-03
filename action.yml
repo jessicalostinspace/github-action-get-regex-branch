@@ -1,4 +1,5 @@
 name: 'Get Last Branch and Semantic Version Containing String'
+author: "Jessica Wilson"
 description: 'Returns the branch name and semantic version given a string'
 inputs:
   regex-string:  # id of input
@@ -13,3 +14,6 @@ outputs:
 runs:
   using: 'node12'
   main: 'index.js'
+branding:
+  icon: 'git-branch'
+  color: 'white'
