@@ -5,7 +5,6 @@ const exec = util.promisify(require('child_process').exec);
 try {
   // `regex-string` input defined in action metadata file
   const regexString = core.getInput('regex-string');
-  console.log(`Regex String: ${regexString}`);
 
   const command = 'bash cut-release-branch.sh ' + regexString;
 
