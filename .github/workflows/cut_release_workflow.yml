@@ -16,9 +16,6 @@ jobs:
     steps:
     - name: Checkout Development
       uses: actions/checkout@v1 #checks-out your repository under $GITHUB_WORKSPACE, so your workflow can access it.
-      # with: 
-      #   ref: 'development'
-      # token: ${{ github.token }}
     - name: Get Latest Release Branch
       id: lrb
       uses: ./
