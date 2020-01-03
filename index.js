@@ -1,8 +1,5 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
-// const { exec } = require('child_process');
-
-
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -16,16 +13,13 @@ try {
   const output = getSemVerBranches(command);
   output.then(function(result){
     console.log("result: ", result)
-    if (result) {
-      console.log("resultSemVer: ", result["semanticVersion"])
+    if (result["semanticVersion"]) {
+      core.setOutput("last-semver", result["semanticVersion"]);
     }
-  })
-  // console.log("output :", output.then(function(result){console.log(result)})
-
-  // console.log('lastReleaseBranchName: ', lastReleaseBranchName)
-
-  //   const time = (new Date()).toTimeString();
-  //   core.setOutput("time", time);
+    if (result["branchName"]) {
+      core.setOutput("last-semver-branch", result["branchName"]);
+    }
+  });
 
   // Get the JSON webhook payload for the event that triggered the workflow
   //   const payload = JSON.stringify(github.context.payload, undefined, 2)
@@ -46,11 +40,11 @@ async function getSemVerBranches(command) {
     return;
   }
 
-  console.log('\x1b[32m%s\x1b[0m', `Found branch: ${stdout}`);
   const data = JSON.parse(stdout);
   if (data) {
     return data;
   }
+  console.log('\x1b[32m%s\x1b[0m', `Result: ${data}`);
 
   // core.setOutput("release-branch-name", release-branch-name);
   process.exit(0);
