@@ -40,11 +40,11 @@ async function getSemVerBranches(command) {
     return;
   }
 
+  console.log('\x1b[32m%s\x1b[0m', `Result: ${stdout}`);
   const data = JSON.parse(stdout);
   if (data) {
     return data;
   }
-  console.log('\x1b[32m%s\x1b[0m', `Result: ${data}`);
 
   // core.setOutput("release-branch-name", release-branch-name);
   process.exit(0);
