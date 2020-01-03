@@ -33,7 +33,7 @@ try {
   //   process.exit(0);
   // });
 
-  const output = getSemVerBranches(command);
+  const output = await getSemVerBranches(command);
   console.log("output :", output)
 
   // console.log('lastReleaseBranchName: ', lastReleaseBranchName)
