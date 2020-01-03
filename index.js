@@ -1,5 +1,4 @@
 const core = require('@actions/core');
-const github = require('@actions/github');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
 
@@ -21,10 +20,6 @@ try {
       core.setOutput("last-semver-branch", result["branchName"]);
     }
   });
-
-  // Get the JSON webhook payload for the event that triggered the workflow
-  //   const payload = JSON.stringify(github.context.payload, undefined, 2)
-  //   console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
 }
@@ -41,12 +36,10 @@ async function getSemVerBranches(command) {
     return;
   }
 
-  console.log('\x1b[32m%s\x1b[0m', `Result: ${stdout}`);
   const data = JSON.parse(stdout);
   if (data) {
     return data;
   }
 
-  // core.setOutput("release-branch-name", release-branch-name);
   process.exit(0);
 }
