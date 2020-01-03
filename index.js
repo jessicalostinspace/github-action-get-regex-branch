@@ -34,7 +34,10 @@ try {
   // });
 
   const output = getSemVerBranches(command);
-  console.log("output :", output.then(function(result){console.log(result)})
+  output.then(function(result){
+    console.log("result: ", result)
+  })
+  // console.log("output :", output.then(function(result){console.log(result)})
 
   // console.log('lastReleaseBranchName: ', lastReleaseBranchName)
 
