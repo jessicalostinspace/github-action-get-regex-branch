@@ -23,6 +23,6 @@ The branch in which the last semantic version was pulled from.
 
 uses: actions/github-action-get-regex-branch@v1
 
-with:
-  regex-string: 'release-v'
+    with:
+      regex-string: 'release-v'
   
