@@ -21,8 +21,7 @@ The branch in which the last semantic version was pulled from.
 
 ## Example usage
 
-uses: actions/github-action-get-regex-branch@v1
-
+    uses: actions/github-action-get-regex-branch@v1
     with:
       regex-string: 'release-v'
   
