@@ -13,29 +13,12 @@ try {
 
   const command = 'bash cut-release-branch.sh ' + regexString;
 
-  // // Get all the branches with the regex prefix and return the last version
-  // exec(command, [{ shell: "bash" }], (err, stdout, stderr) => {
-  //   if (err) {
-  //     console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
-  //     console.log('\x1b[31m%s\x1b[0m', stderr);
-  //     process.exit(1);
-
-  //     return;
-  //   }
-
-  //   console.log('\x1b[32m%s\x1b[0m', `Found branch: ${stdout}`);
-  //   const data = JSON.parse(stdout);
-  //   if (data) {
-  //     return data;
-  //   }
-
-  //   // core.setOutput("release-branch-name", release-branch-name);
-  //   process.exit(0);
-  // });
-
   const output = getSemVerBranches(command);
   output.then(function(result){
     console.log("result: ", result)
+    if (result) {
+      console.log("resultSemVer: ", result["semanticVersion"])
+    }
   })
   // console.log("output :", output.then(function(result){console.log(result)})
 
