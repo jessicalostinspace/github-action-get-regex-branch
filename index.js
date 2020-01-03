@@ -12,11 +12,12 @@ try {
 
   const output = getSemVerBranches(command);
   output.then(function(result){
-    console.log("result: ", result)
     if (result["semanticVersion"]) {
+      console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${result["semanticVersion"]}`);
       core.setOutput("last-semver", result["semanticVersion"]);
     }
     if (result["branchName"]) {
+      console.log('\x1b[32m%s\x1b[0m', `Last Branch with Semantic Version Found: ${result["branchName"]}`);
       core.setOutput("last-semver-branch", result["branchName"]);
     }
   });
