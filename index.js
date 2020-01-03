@@ -1,12 +1,12 @@
 const core = require('@actions/core');
 const util = require('util');
 const exec = util.promisify(require('child_process').exec);
-const re = require('re');
 
 try {
   // `regex-string` input defined in action metadata file
   const regexString = core.getInput('regex-string');
-  if (re.match("^[A-Za-z0-9_-]*$", regexString)) {
+  const regexp = /^[A-Za-z0-9_-]*$/;
+  if (regexp.test(regexString)) {
     const command = 'bash cut-release-branch.sh ' + regexString;
   
     const output = getSemVerBranches(command);
