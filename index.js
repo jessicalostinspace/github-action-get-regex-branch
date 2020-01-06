@@ -32,20 +32,23 @@ try {
 
 async function getSemVerBranches(command) {
   // Get all the branches with the regex prefix and return the last version
-  const { err, stdout, stderr } = await exec(command, [{ shell: "bash" }]);
+  try{
+    const { err, stdout, stderr } = await exec(command, [{ shell: "bash" }]);
 
-  if (err) {
-    console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
-    console.log('\x1b[31m%s\x1b[0m', stderr);
-    process.exit(1);
-
-    return;
+    if (err) {
+      console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
+      console.log('\x1b[31m%s\x1b[0m', stderr);
+      process.exit(1);
+  
+      return;
+    }
+  
+    const data = JSON.parse(stdout);
+    if (data) {
+      return data;
+    }
+  } catch (err) {
+    console.log(err);
+    process.exit(0);
   }
-
-  const data = JSON.parse(stdout);
-  if (data) {
-    return data;
-  }
-
-  process.exit(0);
 }
