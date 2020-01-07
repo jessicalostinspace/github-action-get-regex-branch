@@ -7,7 +7,7 @@ try {
   const regexString = core.getInput('regex-string');
   const regexp = /^[A-Za-z0-9_-]*$/;
   if (regexp.test(regexString)) {
-    const command = './ cut-release-branch.sh ' + regexString;
+    const command = './ chmod +x cut-release-branch.sh ' + regexString;
   
     const output = getSemVerBranches(command);
     output.then(function(result){
