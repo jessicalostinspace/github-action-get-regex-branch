@@ -2,7 +2,6 @@ const core = require('@actions/core');
 const exec = require('@actions/exec');
 
 const src = __dirname;
-console.log("src: ", src)
 
 try {
   // `regex-string` input defined in action metadata file
@@ -38,20 +37,19 @@ async function getSemVerBranches(regexString) {
 
     await exec.exec(`${src}/get-semver-and-branch.sh`, [regexString], options);
     const { semanticVersion, branchName } = JSON.parse(output);
-    console.log("semanticVersion: ", semanticVersion)
-    console.log("branchName", branchName)
-    console.log("output: ", JSON.parse(output))
-    if (output["semanticVersion"]) {
-      console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${output["semanticVersion"]}`);
-      core.setOutput("last-semver", output["semanticVersion"]);
+
+    if (semanticVersion) {
+      console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${semanticVersion}`);
+      core.setOutput("last-semver", semanticVersion);
     }
-    if (output["branchName"]) {
-      console.log('\x1b[32m%s\x1b[0m', `Last Branch with Semantic Version Found: ${output["branchName"]}`);
-      core.setOutput("last-semver-branch", output["branchName"]);
+    if (branchName) {
+      console.log('\x1b[32m%s\x1b[0m', `Last Branch with Semantic Version Found: ${branchName}`);
+      core.setOutput("last-semver-branch", branchName);
     }
     if (err) {
       console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
       console.log('\x1b[31m%s\x1b[0m', err);
+      core.setFailed(err);
       process.exit(1);
     }
   } catch (err) {
