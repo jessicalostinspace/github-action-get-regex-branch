@@ -35,6 +35,7 @@ async function getSemVerBranches(regexString) {
   // Get all the branches with the regex prefix and return the last version
   try{
     const execOutput = await exec.exec(`${src}/get-semver-and-branch.sh ${regexString}`);
+    console.log('execOutput', execOutput)
     core.debug(`execOutput: ${execOutput}`);
   } catch (err) {
     core.setFailed(err.message);

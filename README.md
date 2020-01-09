@@ -21,7 +21,8 @@ The branch in which the last semantic version was pulled from.
 
 ## Example usage
 
-    uses: actions/github-action-get-regex-branch@v1
-    with:
-      regex-string: 'release-v'
-  
+    - name: Get Last Branch and Semantic Version Containing String
+          id: lrb
+          uses: jessicalostinspace/github-action-get-regex-branch@v1.0.2
+          with:
+            regex-string: 'release-v' 
