@@ -5,6 +5,9 @@ regexString=$1
 
 semanticVersion=''
 branchName=''
+echo git branch -a
+echo cwd
+
 if [ $regexString ]; then 
     branchName=$(echo $(git branch -a | grep $regexString | grep -E '([0-9]+\.){2}[0-9]+' | sort --version-sort | tail -n 1 | sed 's@.*/@@'))
     semanticVersion=$(echo $(git branch -a | grep $regexString | egrep -o '([0-9]+\.){2}[0-9]+' | sort --version-sort | tail -n 1))
