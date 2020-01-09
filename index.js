@@ -42,18 +42,17 @@ async function getSemVerBranches(regexString) {
     options.listeners = {
       stdout: (data) => {
         output += data.toString();
+        console.log("output1: ", output)
       },
       stderr: (data) => {
         err += data.toString();
+        console.log("err1: ", err)
       }
     };
 
-    await exec.exec(`${src}/get-semver-and-branch.sh ${regexString}`, options);
+    await exec.exec(`${src}/get-semver-and-branch.sh`, [regexString], options);
     console.log("output: ", output)
     console.log("err: ", err)
-    console.log('stdout', stdout)
-    console.log('stderr', stderr)
-    core.debug(`stderr: ${stderr}`);
   } catch (err) {
     core.setFailed(err.message);
       if (err) {
