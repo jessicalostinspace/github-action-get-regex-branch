@@ -29,7 +29,7 @@ async function getSemVerBranches(regexString) {
     const options = {};
     options.listeners = {
       stdout: (data) => {
-        output += JSON.parse(data);
+        output += JSON.parse(JSON.stringify(data));
       },
       stderr: (data) => {
         err += JSON.parse(data);
