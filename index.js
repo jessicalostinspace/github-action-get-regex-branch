@@ -29,10 +29,11 @@ async function getSemVerBranches(regexString) {
     const options = {};
     options.listeners = {
       stdout: (data) => {
-        output += data.toString();
+        output += JSON.parse(data);
+
       },
       stderr: (data) => {
-        err += data.toString();
+        err += JSON.parse(data);
       }
     };
 
