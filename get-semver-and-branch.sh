@@ -1,4 +1,5 @@
-set -e
+#!/bin/bash
+set -eou pipefail
 
 regexString=$1
 

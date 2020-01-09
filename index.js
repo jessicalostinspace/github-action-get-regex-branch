@@ -1,54 +1,59 @@
 const core = require('@actions/core');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const exec = require('@actions/exec');
+
+const src = __dirname;
 
 try {
   // `regex-string` input defined in action metadata file
   const regexString = core.getInput('regex-string');
   const regexp = /^[A-Za-z0-9_-]*$/;
+
   if (regexp.test(regexString)) {
-    const command = 'bash cut-release-branch.sh ' + regexString;
-  
-    const output = getSemVerBranches(command);
-    output.then(function(result){
-      if (result["semanticVersion"]) {
-        console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${result["semanticVersion"]}`);
-        core.setOutput("last-semver", result["semanticVersion"]);
-      }
-      if (result["branchName"]) {
-        console.log('\x1b[32m%s\x1b[0m', `Last Branch with Semantic Version Found: ${result["branchName"]}`);
-        core.setOutput("last-semver-branch", result["branchName"]);
-      }
-    });
+    getSemVerBranches(regexString);
   } else {
     const regexError = "Regex string must contain only numbers, strings, underscores, and dashes.";
     console.log('\x1b[33m%s\x1b[0m', regexError);
     core.setFailed(regexError);
   }
-
 } catch (error) {
   core.setFailed(error.message);
 }
 
-async function getSemVerBranches(command) {
+async function getSemVerBranches(regexString) {
   // Get all the branches with the regex prefix and return the last version
   try{
-    const { err, stdout, stderr } = await exec(command, [{ shell: "bash" }]);
+    let output = '';
+    let err = '';
+    
+    const options = {};
+    options.listeners = {
+      stdout: (data) => {
+        output += data.toString();
+      },
+      stderr: (data) => {
+        err += data.toString();
+      }
+    };
 
+    await exec.exec(`${src}/get-semver-and-branch.sh`, [regexString], options);
+    const { semanticVersion, branchName } = JSON.parse(output);
+
+    if (semanticVersion) {
+      console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${semanticVersion}`);
+      core.setOutput("last-semver", semanticVersion);
+    }
+    if (branchName) {
+      console.log('\x1b[32m%s\x1b[0m', `Last Branch with Semantic Version Found: ${branchName}`);
+      core.setOutput("last-semver-branch", branchName);
+    }
     if (err) {
       console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
-      console.log('\x1b[31m%s\x1b[0m', stderr);
+      console.log('\x1b[31m%s\x1b[0m', err);
+      core.setFailed(err);
       process.exit(1);
-  
-      return;
-    }
-  
-    const data = JSON.parse(stdout);
-    if (data) {
-      return data;
     }
   } catch (err) {
-    console.log(err);
+    core.setFailed(err.message);
     process.exit(0);
   }
 }
