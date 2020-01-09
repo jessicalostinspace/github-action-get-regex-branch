@@ -38,7 +38,7 @@ async function getSemVerBranches(regexString) {
     };
 
     await exec.exec(`${src}/get-semver-and-branch.sh`, [regexString], options);
-
+    console.log("output: ", output)
     if (output["semanticVersion"]) {
       console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${output["semanticVersion"]}`);
       core.setOutput("last-semver", output["semanticVersion"]);
