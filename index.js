@@ -1,15 +1,16 @@
 const core = require('@actions/core');
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
+const exec = require('@actions/exec');
+
+const src = __dirname;
+console.log("src: ", src)
 
 try {
   // `regex-string` input defined in action metadata file
   const regexString = core.getInput('regex-string');
   const regexp = /^[A-Za-z0-9_-]*$/;
   if (regexp.test(regexString)) {
-    const command = 'bash cut-release-branch.sh ' + regexString;
   
-    const output = getSemVerBranches(command);
+    const output = getSemVerBranches(regexString);
     output.then(function(result){
       if (result["semanticVersion"]) {
         console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${result["semanticVersion"]}`);
@@ -30,25 +31,20 @@ try {
   core.setFailed(error.message);
 }
 
-async function getSemVerBranches(command) {
+async function getSemVerBranches(regexString) {
   // Get all the branches with the regex prefix and return the last version
   try{
-    const { err, stdout, stderr } = await exec(command, [{ shell: "bash" }]);
-
-    if (err) {
-      console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
-      console.log('\x1b[31m%s\x1b[0m', stderr);
-      process.exit(1);
-  
-      return;
-    }
-  
-    const data = JSON.parse(stdout);
-    if (data) {
-      return data;
-    }
+    const execOutput = await exec.exec(`${src}/get-semver-and-branch.sh ${regexString}`);
+    execOutput.then(function(result){
+        console.log("exec Output result: ", result)
+    });
   } catch (err) {
-    console.log(err);
+    core.setFailed(err.message);
+      if (err) {
+        console.log('\x1b[33m%s\x1b[0m', 'Could not find any branches because: ');
+        console.log('\x1b[31m%s\x1b[0m', err);
+        process.exit(1);
+      }
     process.exit(0);
   }
 }
