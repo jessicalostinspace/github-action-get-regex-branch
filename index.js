@@ -34,6 +34,7 @@ async function getSemVerBranches(regexString) {
         err += data.toString();
       }
     };
+    options.cwd = './';
 
     await exec.exec(`${src}/get-semver-and-branch.sh`, [regexString], options);
     const { semanticVersion, branchName } = JSON.parse(output);
