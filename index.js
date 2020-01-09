@@ -40,7 +40,7 @@ async function getSemVerBranches(regexString) {
     const { semanticVersion, branchName } = output;
     console.log("semanticVersion: ", semanticVersion)
     console.log("branchName", branchName)
-    console.log("output: ", output)
+    console.log("output: ", JSON.parse(output))
     if (output["semanticVersion"]) {
       console.log('\x1b[32m%s\x1b[0m', `Last Semantic Version Found: ${output["semanticVersion"]}`);
       core.setOutput("last-semver", output["semanticVersion"]);
